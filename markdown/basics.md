@@ -25,8 +25,8 @@ Or, I might even leave a comment about how to insert an image.
 
 ### This section has subheaders
 
-In this subsection I'll put a code block.
-```json 
+In this subsection I'll put some code blocks.
+```
 {  
   "firstName": "John",  
   "lastName": "Smith",  
@@ -34,6 +34,26 @@ In this subsection I'll put a code block.
   "option+8": •,
 }  
 ```
+
+They can use different languages:
+```python
+import timeit
+
+setup_code = """
+def function_to_time(int: x):
+    return x*x
+"""
+
+statement_code = "function_to_time(10)"
+
+execution_time = timeit.timeit(stmt=statement_code, setup=setup_code, number=100)
+print(f"Average time to execute over 100 runs: {execution_time / 10000:.6f} seconds per run")
+```
+
+```bash
+python above_code.py
+```
+
 
 ### See, plural.
 
