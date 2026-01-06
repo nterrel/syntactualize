@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
 # Bash basics / syntax notes
-# Run: bash bash/basics.sh
-# Make executable: chmod +x bash/basics.sh
+# Run: bash ~/syntactualize/bash/basics.sh
+# Make executable: chmod +x ~/syntactualize/bash/basics.sh
 #
 
 # --- "strict-ish" mode (recommended for scripts) ---
@@ -17,7 +17,8 @@ printf "Hi there!\n"
 printf "Bash separates commands by newlines or semicolons.\n\n"
 
 # --- Variables ---
-# No spaces around '='. Variables are untyped strings by default.
+# Don't put spaces around '='. 
+# Variables are untyped strings by default.
 count=5
 name="Nick"
 
