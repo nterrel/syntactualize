@@ -25,8 +25,8 @@ Or, I might even leave a comment about how to insert an image.
 
 ### This section has subheaders
 
-In this subsection I'll put a table.
-```python  
+In this subsection I'll put a code block.
+```json 
 {  
   "firstName": "John",  
   "lastName": "Smith",  
