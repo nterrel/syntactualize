@@ -55,7 +55,7 @@ cpp-check:
 	@$(MAKE) -C cpp check
 
 .PHONY: test
-test:
+test: all
 	@if [ -f python/.venv/bin/python ]; then \
 		python/.venv/bin/python -m pytest tests/ -v; \
 	else \

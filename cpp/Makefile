@@ -21,7 +21,8 @@ run: $(TARGETS)
 	@echo "==> C++: running demos"
 	@mkdir -p "$(OUTDIR)"
 	@for prog in $(TARGETS); do \
-		./$$prog > "$(OUTDIR)/cpp_$$prog.txt" && echo "  ✓ $$prog"; \
+		base=$${prog%.o}; \
+		./$$prog > "$(OUTDIR)/cpp_$$base.txt" && echo "  ✓ $$prog"; \
 	done
 
 .PHONY: clean

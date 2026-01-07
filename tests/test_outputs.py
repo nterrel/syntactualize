@@ -165,7 +165,7 @@ class TestOutputsDirectory:
             "python_basics.txt",
             "python_numpy.txt",
             "python_matplotlib.txt",
-            "cpp_basics.txt",
+            "cpp_basics.o.txt",
             "_tmp_array.npy",  # From numpy demo
         }
 
