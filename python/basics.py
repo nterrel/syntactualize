@@ -8,9 +8,9 @@ Run:
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Iterator, Optional
 
 
 def section(title: str) -> None:
@@ -63,7 +63,8 @@ def demo_collections() -> None:
     print("dict value for 'Two':", d["Two"])
     print("dict get with default:", d.get("Missing", 999))
 
-    s = {"a", "b", "a"}  # duplicates removed
+    s = {"a", "b", "c"}  # sets have unique elements
+    s.add("a")  # duplicate ignored
     print("set:", s)
     print("set contains 'a'?", "a" in s)
 

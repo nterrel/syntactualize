@@ -16,20 +16,21 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-import numpy as np
 import matplotlib.pyplot as plt
-
-
-def section(title: str) -> None:
-    print("\n" + "=" * len(title))
-    print(title)
-    print("=" * len(title))
+import numpy as np
 
 outdir = Path(os.environ.get("OUTPUT_DIR", "."))
 outdir.mkdir(parents=True, exist_ok=True)
 
+
+def section(title: str) -> None:
+    """Print a section header."""
+    print("\n" + "=" * len(title))
+    print(title)
+    print("=" * len(title))
+
+
 def save(fig: plt.Figure, filename: str) -> None:
-    path = outdir / filename
     fig.tight_layout()
     fig.savefig(filename, dpi=200)
     plt.close(fig)

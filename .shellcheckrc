@@ -3,8 +3,12 @@
 
 # Disable specific checks that are too noisy for educational scripts
 disable=SC2016  # Allow single quotes in comments with variables
+disable=SC2030  # Allow local subshell modifications (for demonstration)
+disable=SC2031  # Allow showing subshell scope behavior (for demonstration)
 disable=SC2034  # Allow unused variables (for demonstration)
 disable=SC2148  # Allow missing shebang (for sourced files)
+disable=SC2249  # Allow missing default case (for simple examples)
+disable=SC2250  # Don't require braces for simple variables ("$var" is fine)
 
 # Enable optional checks
 enable=add-default-case
@@ -12,4 +16,3 @@ enable=avoid-nullary-conditions
 enable=check-unassigned-uppercase
 enable=deprecate-which
 enable=quote-safe-variables
-enable=require-variable-braces
