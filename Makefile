@@ -71,8 +71,6 @@ perl-run: prepare
 	@echo "Wrote: $(OUTDIR)/perl_basics.txt"
 
 # --- python ---
-# NOTE: avoid naming files python/numpy.py or python/matplotlib.py
-# because they can shadow real packages when running from that directory.
 .PHONY: python python-check python-run
 python: python-check python-run
 

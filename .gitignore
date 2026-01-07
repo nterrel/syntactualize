@@ -11,6 +11,7 @@ venv/
 .pytest_cache/
 .coverage
 .tox/
+.ruff_cache/
 
 # Generated outputs
 outputs/

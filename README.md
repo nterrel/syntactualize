@@ -5,14 +5,14 @@ Each folder contains small scripts that double as notes and reference material.
 
 ## Structure
 
-```
+```md
 syntactually/
-├── bash/           # Shell scripting + CLI tools (grep, awk, sed)
-├── perl/           # Perl basics and idioms
-├── python/         # Python syntax + libraries (NumPy, Matplotlib)
-├── markdown/       # Markdown patterns and snippets
-├── tests/          # Automated test suite
-└── outputs/        # Generated output files (gitignored)
+├── bash/ # Shell scripting + CLI tools (grep, awk, sed)
+├── perl/ # Perl basics and idioms
+├── python/ # Python syntax + libraries (NumPy, Matplotlib)
+├── markdown/ # Markdown patterns and snippets
+├── tests/ # Automated test suite
+└── outputs/ # Generated output files (gitignored)
 ```
 
 ### Language Folders
