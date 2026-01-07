@@ -37,6 +37,23 @@ all: prepare $(SUBDIRS)
 	@echo "==> All done"
 	@echo "Outputs captured in: $(OUTDIR)/"
 
+# Convenience targets for checking syntax only
+.PHONY: bash-check perl-check python-check zsh-check cpp-check
+bash-check:
+	@$(MAKE) -C bash check
+
+perl-check:
+	@$(MAKE) -C perl check
+
+python-check:
+	@$(MAKE) -C python check
+
+zsh-check:
+	@$(MAKE) -C zsh check
+
+cpp-check:
+	@$(MAKE) -C cpp check
+
 .PHONY: test
 test:
 	@if [ -f python/.venv/bin/python ]; then \
