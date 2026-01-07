@@ -98,9 +98,7 @@ Scripts generate output files in the `outputs/` directory:
 - `python_matplotlib.txt` - Matplotlib plotting
 - `cpp_basics.txt` - C++ syntax and features
 
-## Development
-
-### Prerequisites
+## Prerequisites
 
 - **Bash** (standard on macOS/Linux)
 - **Zsh** (standard on macOS, available on most Linux)
@@ -114,28 +112,10 @@ Optional for linting:
 - **shellcheck** - Bash script linting
 - **ruff** - Python linting (installed with `make setup`)
 
-### Adding New Scripts
-
-1. Create your script in the appropriate language folder
-2. Add syntax check and run commands to the Makefile
-3. Update the folder's README with script description
-4. Add tests in `tests/` to verify the script works
-5. Run `make all` and `make test` to verify
-
-### Clean Up
+## Clean Up
 
 Remove generated outputs and caches:
 
 ```bash
 make clean
 ```
-
-## CI/CD
-
-GitHub Actions automatically runs on every push:
-
-- **Test** - Runs all scripts (bash, zsh, perl, python, cpp) on Ubuntu and macOS
-- **Lint** - Checks shell scripts with shellcheck and Python code with ruff
-- **Verify** - Runs the test suite with pytest
-
-See [.github/workflows/ci.yml](.github/workflows/ci.yml) for details.
