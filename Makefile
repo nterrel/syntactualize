@@ -21,11 +21,12 @@ help:
 	@echo "  make bash       - shell scripts: syntax check + run demos"
 	@echo "  make perl       - perl script: syntax check + run demo"
 	@echo "  make python     - python: compileall + run demos"
+	@echo "  make test       - run test suite with pytest"
 	@echo "  make lint       - optional linters if installed (shellcheck, ruff)"
 	@echo "  make clean      - remove outputs and caches"
 	@echo ""
 	@echo "Convenience:"
-	@echo "  ./run_all.sh [target]   - wrapper around make"
+	@echo "  ./run_scripts.sh [target]   - wrapper around make"
 
 .PHONY: prepare
 prepare:
@@ -100,6 +101,12 @@ python-run: prepare
 	fi
 
 	@echo "Wrote: $(OUTDIR)/python_basics.txt, python_numpy.txt, python_matplotlib.txt"
+
+# --- tests ---
+.PHONY: test
+test:
+	$(call print_header,"Running test suite")
+	@$(PY) -m pytest tests/ -v
 
 # --- optional linting (won't fail if tools missing) ---
 .PHONY: lint

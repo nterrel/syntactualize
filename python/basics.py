@@ -37,7 +37,7 @@ def demo_numbers_and_bool() -> None:
     b = 3
     print("a+b =", a + b)
     print("a/b =", a / b)   # float division
-    print("a//b =", a // b) # integer floor division
+    print("a//b =", a // b)  # integer floor division
     print("a%b =", a % b)   # modulo
     print("a**b =", a**b)   # power
 

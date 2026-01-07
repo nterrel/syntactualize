@@ -17,4 +17,3 @@ chmod +x basics.sh grep.sh awk.sh
 ./awk.sh
 ./grep.sh
 ```
-

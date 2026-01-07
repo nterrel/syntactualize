@@ -1,0 +1,15 @@
+# ShellCheck configuration
+# https://github.com/koalaman/shellcheck/wiki/Directive
+
+# Disable specific checks that are too noisy for educational scripts
+disable=SC2016  # Allow single quotes in comments with variables
+disable=SC2034  # Allow unused variables (for demonstration)
+disable=SC2148  # Allow missing shebang (for sourced files)
+
+# Enable optional checks
+enable=add-default-case
+enable=avoid-nullary-conditions
+enable=check-unassigned-uppercase
+enable=deprecate-which
+enable=quote-safe-variables
+enable=require-variable-braces

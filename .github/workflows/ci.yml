@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  test-scripts:
+    name: Test on ${{ matrix.os }} - Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.10', '3.11', '3.12']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      
+      - name: Install Perl
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            sudo apt-get update
+            sudo apt-get install -y perl
+          fi
+          perl --version
+      
+      - name: Set up Python environment
+        run: make setup
+      
+      - name: Run bash scripts
+        run: make bash
+      
+      - name: Run perl scripts
+        run: make perl
+      
+      - name: Run python scripts
+        run: make python
+      
+      - name: Verify outputs were generated
+        run: |
+          test -f outputs/bash_basics.txt || (echo "Missing bash_basics.txt" && exit 1)
+          test -f outputs/bash_grep.txt || (echo "Missing bash_grep.txt" && exit 1)
+          test -f outputs/bash_awk.txt || (echo "Missing bash_awk.txt" && exit 1)
+          test -f outputs/perl_basics.txt || (echo "Missing perl_basics.txt" && exit 1)
+          test -f outputs/python_basics.txt || (echo "Missing python_basics.txt" && exit 1)
+          test -f outputs/python_numpy.txt || (echo "Missing python_numpy.txt" && exit 1)
+          test -f outputs/python_matplotlib.txt || (echo "Missing python_matplotlib.txt" && exit 1)
+          echo "✓ All expected outputs generated"
+      
+      - name: Run tests
+        run: |
+          source python/.venv/bin/activate
+          pytest tests/ -v
+      
+      - name: Upload outputs as artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: outputs-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: outputs/
+          retention-days: 7
+
+  lint:
+    name: Lint and style checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+      
+      - name: Set up Python environment
+        run: make setup
+      
+      - name: Run linters
+        run: make lint
+      
+      - name: Check shell scripts with shellcheck
+        run: |
+          shellcheck bash/*.sh
+          shellcheck run_scripts.sh
+      
+      - name: Check Python with ruff
+        run: |
+          source python/.venv/bin/activate
+          ruff check python/
+      
+      - name: Check Perl syntax
+        run: |
+          perl -c perl/basics.pl
