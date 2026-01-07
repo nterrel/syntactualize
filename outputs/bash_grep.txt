@@ -1,0 +1,82 @@
+Input file: (temporary demo log)
+
+INFO 2026-01-06 startup complete
+WARN 2026-01-06 disk usage 67%
+ERROR 2026-01-06 failed to open file: config.yaml
+INFO 2026-01-06 user=nick action=login
+DEBUG 2026-01-06 retry=1
+ERROR 2026-01-06 timeout after 3.50s
+
+1) Basic search (lines containing 'ERROR'):
+ERROR 2026-01-06 failed to open file: config.yaml
+ERROR 2026-01-06 timeout after 3.50s
+
+2) Case-insensitive (-i):
+ERROR 2026-01-06 failed to open file: config.yaml
+ERROR 2026-01-06 timeout after 3.50s
+
+3) Invert match (-v) (everything except DEBUG):
+INFO 2026-01-06 startup complete
+WARN 2026-01-06 disk usage 67%
+ERROR 2026-01-06 failed to open file: config.yaml
+INFO 2026-01-06 user=nick action=login
+ERROR 2026-01-06 timeout after 3.50s
+
+4) Show line numbers (-n):
+3:ERROR 2026-01-06 failed to open file: config.yaml
+6:ERROR 2026-01-06 timeout after 3.50s
+
+5) Count matches (-c):
+2
+
+6) Whole-word (-w) (word boundaries):
+   (matches 'WARN' but not 'WARNING')
+WARN
+
+7) Match whole line (-x):
+WARN
+
+8) Extended regex (-E):
+   Match INFO or WARN:
+INFO 2026-01-06 startup complete
+WARN 2026-01-06 disk usage 67%
+INFO 2026-01-06 user=nick action=login
+
+9) Basic regex (default grep) vs -E:
+   With basic grep, + and | are not special unless escaped.
+   Prefer -E for anything beyond simple patterns.
+
+10) Show context around matches (-C, -A, -B):
+    1 line before and after ERROR:
+2-WARN 2026-01-06 disk usage 67%
+3:ERROR 2026-01-06 failed to open file: config.yaml
+4-INFO 2026-01-06 user=nick action=login
+5-DEBUG 2026-01-06 retry=1
+6:ERROR 2026-01-06 timeout after 3.50s
+
+11) Only print the matching part (-o):
+    Extract the date (YYYY-MM-DD):
+2026-01-06
+2026-01-06
+2026-01-06
+
+12) Quiet mode (-q) for conditionals:
+Found 'timeout' (exit code 0)
+
+13) Recursive search (-r) + file filters (--include/--exclude):
+    Examples (not run here):
+      grep -R "pattern" .
+      grep -R --include='*.log' "ERROR" .
+      grep -R --exclude-dir='.git' "TODO" .
+
+14) Fixed-string mode (-F) (no regex; faster/safer for literals):
+    Search for a literal '[abc]' string:
+literal [abc]
+
+15) Common pitfalls / tips:
+    - Quote patterns to avoid shell glob expansion.
+    - Use -F for literal strings (paths, JSON fragments, etc.).
+    - Use -E for alternation, +, ?, and groups.
+    - Remember grep is line-based.
+
+Done.

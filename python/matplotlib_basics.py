@@ -13,6 +13,9 @@ Outputs:
 
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -22,8 +25,11 @@ def section(title: str) -> None:
     print(title)
     print("=" * len(title))
 
+outdir = Path(os.environ.get("OUTPUT_DIR", "."))
+outdir.mkdir(parents=True, exist_ok=True)
 
 def save(fig: plt.Figure, filename: str) -> None:
+    path = outdir / filename
     fig.tight_layout()
     fig.savefig(filename, dpi=200)
     plt.close(fig)

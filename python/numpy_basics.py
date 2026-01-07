@@ -8,6 +8,9 @@ Run:
 
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 import numpy as np
 
 
@@ -96,7 +99,9 @@ def main() -> None:
     print("eigenvalues:", eigvals)
 
     section("IO: save/load .npy (fast & simple)")
-    tmp = "_tmp_array.npy"
+    outdir = Path(os.environ.get("OUTPUT_DIR", "."))
+    outdir.mkdir(parents=True, exist_ok=True)
+    tmp = outdir / "_tmp_array.npy"
     np.save(tmp, samples)
     loaded = np.load(tmp)
     print("loaded shape:", loaded.shape, "equal?", np.allclose(loaded, samples))

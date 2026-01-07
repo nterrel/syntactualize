@@ -1,0 +1,90 @@
+
+==================================
+Printing, strings, f-strings, repr
+==================================
+Hello!
+name=Nick, count=5
+repr(name)='Nick'
+newline:
+second line
+raw string keeps backslashes: \n \t
+
+=================
+Numbers, booleans
+=================
+a+b = 10
+a/b = 2.3333333333333335
+a//b = 2
+a%b = 1
+a**b = 343
+x and y = False
+x or y  = True
+not x   = False
+
+==========================
+Lists, tuples, dicts, sets
+==========================
+list: ['one', 'two', 'three', 'four']
+slice items[1:3]: ['two', 'three']
+tuple: (1, 2, 3)
+dict keys: ['One', 'Two', 'Three']
+dict value for 'Two': 2
+dict get with default: 999
+set: {'a', 'b'}
+set contains 'a'? True
+
+========================
+If / for / while / match
+========================
+n > 5
+for i: 0
+for i: 1
+for i: 2
+while i: 0
+while i: 1
+while i: 2
+matched point x=3 y=4
+
+==============
+Comprehensions
+==============
+squares: [0, 1, 4, 9, 16, 25]
+evens set: {0, 2, 4, 6, 8}
+dict comp: {'a': 'A', 'b': 'B', 'c': 'C'}
+
+==========================
+Functions, *args, **kwargs
+==========================
+Hello, Nick!
+kwargs: {'note': 'example'}
+f: 5.0
+
+==========
+Exceptions
+==========
+caught ValueError: invalid literal for int() with base 10: 'not_an_int'
+finally always runs
+
+=====================
+Pathlib (paths/files)
+=====================
+this file: basics.py
+directory: /Users/nickterrel/syntactualize/python
+file contents: ['hello', 'world']
+
+====================
+Dataclasses + typing
+====================
+point: Point(x=3.0, y=4.0)
+norm: 5.0
+
+======================
+Iterators / generators
+======================
+generated: [0, 10, 20, 30]
+count_lines: 3
+
+=====================
+Main guard / CLI note
+=====================
+Put CLI parsing in main(), and protect with if __name__ == '__main__':

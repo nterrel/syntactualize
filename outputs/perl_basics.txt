@@ -1,0 +1,19 @@
+Hi there!
+Perl separates statements by semicolons.
+This string
+shows up on two lines.
+This string \n shows up on only one.
+This variable is 5.
+This list contains 3 variables: One, Two, and Three.
+Call hash (dictionary) elements as with other variables.
+Here's One:1
+To see the keys in a hash, do:
+Two One Three 
+i is currently: 1
+i is currently: 2
+i is currently: 3
+i is currently: 4
+i is currently: 5
+Two is 2 in this hash.
+One is 1 in this hash.
+Three is 3 in this hash.
