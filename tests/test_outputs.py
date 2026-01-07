@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-import pytest
-
 
 class TestBashOutputs:
     """Test bash script outputs."""
@@ -78,23 +76,6 @@ class TestZshOutputs:
         assert "zsh" in content.lower() or "array" in content, "Missing expected zsh content"
 
 
-class TestZshOutputs:
-    """Test zsh script outputs."""
-
-    def test_zsh_basics_output_exists(self, outputs_dir: Path) -> None:
-        """Test that zsh_basics.txt is generated."""
-        output_file = outputs_dir / "zsh_basics.txt"
-        assert output_file.exists(), f"Missing output file: {output_file}"
-
-    def test_zsh_basics_has_content(self, outputs_dir: Path) -> None:
-        """Test that zsh_basics.txt has meaningful content."""
-        output_file = outputs_dir / "zsh_basics.txt"
-        content = output_file.read_text()
-        assert len(
-            content) > 100, "zsh_basics.txt should have substantial content"
-        assert "zsh" in content.lower() or "array" in content, "Missing expected zsh content"
-
-
 class TestPythonOutputs:
     """Test python script outputs."""
 
@@ -143,25 +124,6 @@ class TestPythonOutputs:
             or "matplotlib" in content.lower()
             or "skip" in content.lower()
         )
-
-
-class TestCppOutputs:
-    """Test C++ program outputs."""
-
-    def test_cpp_basics_output_exists(self, outputs_dir: Path) -> None:
-        """Test that cpp_basics.txt is generated."""
-        output_file = outputs_dir / "cpp_basics.txt"
-        assert output_file.exists(), f"Missing output file: {output_file}"
-
-    def test_cpp_basics_has_content(self, outputs_dir: Path) -> None:
-        """Test that cpp_basics.txt has meaningful content."""
-        output_file = outputs_dir / "cpp_basics.txt"
-        content = output_file.read_text()
-        assert len(
-            content) > 200, "cpp_basics.txt should have substantial content"
-        assert any(
-            keyword in content.lower() for keyword in ["vector", "map", "class", "template"]
-        ), "Missing expected C++ concepts"
 
 
 class TestCppOutputs:

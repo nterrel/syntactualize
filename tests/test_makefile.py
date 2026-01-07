@@ -3,8 +3,6 @@
 import subprocess
 from pathlib import Path
 
-import pytest
-
 
 class TestMakefileTargets:
     """Test that Makefile targets execute successfully."""
