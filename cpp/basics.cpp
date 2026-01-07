@@ -455,7 +455,7 @@ void demo_smart_pointers() {
     cout << "unique_ptr value: " << *p1 << "\n";
     
     // Transfer ownership with move
-    unique_ptr<int> p2 = move(p1);
+    unique_ptr<int> p2 = std::move(p1);
     cout << "After move, p2: " << *p2 << "\n";
     cout << "p1 is now: " << (p1 ? "valid" : "nullptr") << "\n";
     
